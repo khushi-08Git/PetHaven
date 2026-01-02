@@ -9,6 +9,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.pethaven.presentation.home.component.CustomSearchBar
 import com.example.pethaven.presentation.home.component.HomeScreenTopComponent
+import com.example.pethaven.presentation.home.component.MemorialComponent
 
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
@@ -24,6 +25,8 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             onSearchClick = {},
             placeholder = "Search for pets, name, location..."
         )
+
+        MemorialComponent()
     }
 }
 

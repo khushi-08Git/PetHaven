@@ -24,19 +24,11 @@ import com.example.pethaven.R
 fun MemorialComponent(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
+            .padding(horizontal = 24.dp)
     ) {
-        val items = listOf(
-            MemorialItem("Ginger", "1,068", R.drawable.img_animal1, 220.dp),
-            MemorialItem("Jeffry", "1,100", R.drawable.img_animal2, 180.dp),
-            MemorialItem("Brownie", "1,008", R.drawable.img_animal3, 210.dp),
-            MemorialItem("Snow", "1,120", R.drawable.img_animal4, 190.dp) ,
-            MemorialItem("Beige", "1,120", R.drawable.img_animal5, 190.dp)
-        )
-
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 24.dp)
                 .padding(top = 32.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         )
@@ -57,15 +49,18 @@ fun MemorialComponent(modifier: Modifier = Modifier) {
 
         LazyVerticalStaggeredGrid(
             modifier = Modifier
-                .padding(top = 12.dp, start = 24.dp),
+                .padding(top = 12.dp),
             columns = StaggeredGridCells.Fixed(2),
             verticalItemSpacing = 12.dp,
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            items(items) { item ->
-                MemorialCard(item)
+            items(memorialItems)
+            { item ->
+                MemorialCard(
+                    modifier = Modifier,
+                    item = item
+                )
             }
-
         }
     }
 }

@@ -25,6 +25,7 @@ import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.tooling.preview.Preview
@@ -34,47 +35,55 @@ import com.example.pethaven.R
 
 @Composable
 fun MemorialCard(
-    item:MemorialItem,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    item: MemorialItem
 ) {
     Column(
         modifier = modifier
-            .paint(painter = painterResource(id = item.image))
             .clip(RoundedCornerShape(24.dp))
+            .paint(
+                painter = painterResource(id = item.imageRes),
+                contentScale = ContentScale.Crop
+            )
             .padding(start = 18.dp),
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         Row(
             modifier = Modifier
-                .padding(top = 18.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ){
+                .padding(top = 18.dp)
+            , verticalAlignment = Alignment.CenterVertically
+        ) {
             Icon(
                 Icons.Default.Favorite,
-                contentDescription = "heart",
+                contentDescription = "heart icon",
                 tint = Color.Red
             )
             Text(
-                text = item.likes,
+                text = item.likes.toString(),
+                style = TextStyle(
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White
+                ),
                 modifier = Modifier
-                    .padding(start = 2.dp)
+                    .padding(start = 4.dp)
             )
         }
         Text(
-            text = item.name,
-            fontSize = 28.sp,
-            fontWeight = FontWeight.ExtraBold,
-            color = Color.White,
+            text = item.title,
+            style = TextStyle(
+                fontSize = 24.sp,
+                fontWeight = FontWeight.ExtraBold,
+                color = Color.White
+            ),
             modifier = Modifier
                 .padding(bottom = 16.dp)
         )
     }
 }
-
 @Preview
 @Composable
 fun MemorialCardPreview(modifier: Modifier = Modifier) {
     MemorialCard(
-        item = MemorialItem("Beige", "1,068", R.drawable.img_animal1, 220.dp)
+        item = MemorialItem("Flur", 1008, R.drawable.img_animal4, 270),
     )
 }

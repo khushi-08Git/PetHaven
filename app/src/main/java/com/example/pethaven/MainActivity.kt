@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.pethaven.presentation.home.HomeScreen
 import com.example.pethaven.presentation.onboarding.OnBoardingPagerScreen
 import com.example.pethaven.ui.theme.PetHavenTheme
 
@@ -20,7 +21,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             PetHavenTheme {
-                OnBoardingPagerScreen()
+                HomeScreen()
+
             }
         }
     }
